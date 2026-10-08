@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Criar conta | Estacionamento ETEC</title>
+        <link rel="stylesheet" href="/estacionamento-ui.css">
+        <link rel="icon" type="image/png" href="/favicon.png">
+        <script src="/theme.js"></script>
+    </head>
+
+    <body>
+        <main class="page">
+            <section class="card wide auth-card auth-register">
+                <div class="brand" aria-label="Estacionamento Sebrae"><span class="brand-park">Estacionamento ETEC</span></div>
+                <h1>Crie sua conta</h1>
+                <p class="subtitle">Cadastre seus dados para começar a administrar o estacionamento.</p>
+                <form class="form" method="post" action="/efetuar_cadastro">
+                    <div class="field">
+                        <label for="nome">Nome completo</label>
+                        <input class="input" type="text" name="nome" id="nome" required="">
+                    </div>
+                    <div class="field">
+                        <label for="email">E-mail</label>
+                        <input class="input" type="email" name="email" id="email" required="">
+                    </div>
+                    <div class="field">
+                        <label for="telefone">Telefone</label>
+                        <input class="input" type="tel" name="telefone" id="telefone" placeholder="(11) 99999-9999" required="">
+                    </div>
+                    <div class="field">
+                        <label for="cpf">CPF</label>
+                        <input class="input" type="text" name="cpf" id="cpf" maxlength="14" required="">
+                    </div>
+                    <div class="field">
+                        <label for="dataDeNascimento">Data de nascimento</label>
+                        <input class="input" type="date" name="dataDeNascimento" id="dataDeNascimento" required="">
+                    </div>
+                    <div class="field">
+                        <label for="senha">Senha</label>
+                        <input class="input" type="password" name="senha" id="senha" minlength="6" required="">
+                    </div>
+                    <div class="field">
+                        <label for="confirmarSenha">Confirmar senha</label>
+                        <input class="input" type="password" name="confirmarSenha" id="confirmarSenha" minlength="6" required="">
+                    </div>
+                    <button type="submit">Criar minha conta</button>
+                </form>
+                <div class="divider"></div>
+                <p class="helper center">Já possui uma conta? <a href="/">Voltar para o login</a></p>
+            </section>
+        </main>
+    </body>
+</html>

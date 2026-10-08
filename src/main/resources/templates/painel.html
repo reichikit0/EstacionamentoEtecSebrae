@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Painel | Estacionamento ETEC</title>
+        <link rel="stylesheet" href="/estacionamento-ui.css">
+        <script src="/theme.js"></script>
+
+        <link rel="icon" type="image/png" href="/favicon.png">
+    </head>
+    <body>
+        <main class="dashboard">
+            <header class="topbar">
+                <div class="brand" aria-label="Estacionamento Sebrae"><span class="brand-park">Estacionamento ETEC</span></div>
+                <span class="status">Sistema operacional</span>
+            </header>
+            <section class="hero">
+                <h1>Olá, <span th:text="${nome != null ? nome : 'usuário'}">usuário</span> 👋</h1>
+                <p class="subtitle">Gerencie as entradas dos veículos de forma rápida e organizada.</p>
+                <div class="hero-actions"><a class="button" href="/veiculo/cadastrar">Registrar veículo →</a><a class="button danger" href="/veiculo/registrar-saida">Remover veículo →</a></div>
+            </section>
+            <section class="dashboard-grid">
+                <article class="panel">
+                    <h3>Registrar entrada</h3>
+                    <p>Cadastre placa, modelo, cor e observações do veículo que acabou de chegar.</p>
+                    <a class="button" href="/veiculo/cadastrar">Registrar veículo →</a>
+                </article>
+                <article class="panel">
+                    <h3>Registrar saída</h3>
+                    <p>Selecione um veículo registrado para iniciar o processo de saída.</p>
+                    <a class="button secondary" href="/veiculo/registrar-saida">Registrar saída →</a>
+                </article>
+            </section>
+            <section class="panel" style="margin-top:18px">
+                <h3>Conta</h3>
+                <p>Sessão iniciada com sucesso. Para sair do sistema, retorne à tela inicial.</p>
+                <a class="button secondary" href="/">Sair</a>
+            </section>
+            <section class="panel" style="margin-top:18px">
+                <h3>Veículos registrados</h3>
+                <p>Lista das entradas registradas no estacionamento.</p>
+                <div class="vehicle-list" th:if="${veiculos != null and !veiculos.isEmpty()}">
+                    <table class="vehicle-table">
+                        <thead>
+                            <tr>
+                                <th>Placa</th>
+                                <th>Modelo</th>
+                                <th>Cor</th>
+                                <th>Observações</th>
+                                <th>Entrada</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="v : ${veiculos}">
+                                <td th:text="${v.placa}"></td>
+                                <td th:text="${v.modelo}"></td>
+                                <td th:text="${v.cor}"></td>
+                                <td th:text="${v.observacoes}"></td>
+                                <td th:text="${#temporals.format(v.horaEntrada, 'dd/MM/yyyy HH:mm')}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="empty" th:if="${veiculos == null or veiculos.isEmpty()}">Nenhum veículo registrado ainda.</p>
+            </section>
+        </main>
+    </body>
+</html>

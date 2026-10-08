@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registro do veículo | Estacionamento ETEC</title>
+        <link rel="stylesheet" href="/estacionamento-ui.css">
+        <link rel="icon" type="image/png" href="/favicon.png">
+        <script src="/theme.js"></script>
+    </head>
+    <body>
+        <main class="page">
+            <section class="card wide">
+                <div class="brand" aria-label="Estacionamento Sebrae"><span class="brand-park">Estacionamento ETEC</span></div>
+                <h1>Registro do veículo</h1>
+                <p class="subtitle">Todas as informações cadastradas para este veículo no estacionamento.</p>
+                <div class="vehicle-details">
+                    <div class="detail"><span>ID do registro</span><strong th:text="${veiculo.id}">1</strong></div>
+                    <div class="detail"><span>Placa</span><strong th:text="${veiculo.placa}">ABC-1234</strong></div>
+                    <div class="detail"><span>Modelo</span><strong th:text="${veiculo.modelo}">Modelo</strong></div>
+                    <div class="detail"><span>Cor</span><strong th:text="${veiculo.cor}">Cor</strong></div>
+                    <div class="detail detail-full"><span>Observações</span><strong th:text="${veiculo.observacoes != null and !veiculo.observacoes.isEmpty() ? veiculo.observacoes : 'Nenhuma observação registrada'}">Nenhuma observação registrada</strong></div>
+                    <div class="detail detail-full"><span>Data e horário de entrada</span><strong th:text="${#temporals.format(veiculo.horaEntrada, 'dd/MM/yyyy HH:mm:ss')}">01/10/2026 08:00:00</strong></div>
+                    <div class="detail detail-full"><span>Status</span><strong class="status-value">Dentro do estacionamento</strong></div>
+                </div>
+                <div class="actions"> <a class="button danger" th:href="@{/veiculo/registrar-saida}">Registrar saída</a> <a class="button secondary" href="/veiculo/registrar-saida">Voltar</a> </div>
+            </section>
+        </main>
+    </body>
+</html>

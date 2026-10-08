@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Saída confirmada | Estacionamento ETEC</title>
+        <link rel="stylesheet" href="/estacionamento-ui.css">
+        <link rel="icon" type="image/png" href="/favicon.png">
+        <script src="/theme.js"></script>
+    </head>
+    <body>
+        <main class="page">
+            <section class="card wide center">
+                <div class="success-icon">✓</div>
+                <h2>Saída confirmada</h2>
+                <p class="subtitle">O veículo foi removido do estacionamento com sucesso.</p>
+                <div class="exit-confirmation">
+                    <strong th:text="${veiculo.placa}">ABC-1234</strong>
+                    <span th:text="${veiculo.modelo + ' • ' + veiculo.cor}">Modelo • Cor</span>
+                    <div class="exit-time"> <span>Horário da saída</span> <strong th:text="${#temporals.format(horaSaida, 'dd/MM/yyyy HH:mm:ss')}">01/10/2026 08:30:00</strong> </div>
+                </div>
+                <div class="actions"> <a class="button" href="/painel">Voltar ao painel</a> <a class="button secondary" href="/veiculo/registrar-saida">Registrar outra saída</a> </div>
+            </section>
+        </main>
+    </body>
+</html>

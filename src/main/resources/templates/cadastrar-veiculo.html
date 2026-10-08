@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registrar veículo | Estacionamento ETEC</title>
+        <link rel="stylesheet" href="/estacionamento-ui.css">
+        <link rel="icon" type="image/png" href="/favicon.png">
+        <script src="/theme.js"></script>
+    </head>
+    <body>
+
+        <main class="page">
+            <section class="card wide">
+                <div class="brand" aria-label="Estacionamento ETEC"><span class="brand-park">Estacionamento</span><span class="brand-hub">ETEC</span></div>
+                <h1>Registrar entrada</h1>
+                <p class="subtitle">Informe os dados do veículo para registrar sua entrada no estacionamento.</p>
+                <form class="form" method="post" action="/veiculo/cadastrar">
+                    <div class="field">
+                        <label for="placa">Placa</label>
+                        <input class="input" type="text" name="placa" id="placa" placeholder="ABC1D23" maxlength="8" required="">
+                    </div>
+                    <div class="field">
+                        <label for="modelo">Modelo</label>
+                        <input class="input" type="text" name="modelo" id="modelo" placeholder="Ex.: Honda Civic" required="">
+                    </div>
+                    <div class="field">
+                        <label for="cor">Cor</label>
+                        <input class="input" type="text" name="cor" id="cor" placeholder="Ex.: Preto" required="">
+                    </div>
+                    <div class="field">
+                        <label for="observacoes">Observações</label>
+                        <textarea class="input" name="observacoes" id="observacoes" placeholder="Alguma informação importante sobre o veículo?"></textarea>
+                    </div>
+                    <button type="submit">Registrar entrada</button>
+                </form>
+                <div class="divider"></div>
+                <p class="helper center"><a href="/painel">← Voltar ao painel</a></p>
+            </section>
+        </main>
+    </body>
+</html>

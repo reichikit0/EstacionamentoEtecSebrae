@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Remover veículo | Estacionamento ETEC</title>
+        <link rel="stylesheet" href="/estacionamento-ui.css">
+        <link rel="icon" type="image/png" href="/favicon.png">
+        <script src="/theme.js"></script>
+    </head>
+    <body>
+        <main class="page">
+            <section class="card wide">
+                <div class="brand" aria-label="Estacionamento Sebrae"><span class="brand-park">Estacionamento ETEC</span></div>
+                <h1>Registrar saída</h1>
+                <p class="subtitle">Selecione o veículo que está deixando o estacionamento. Antes de remover, você poderá conferir todos os dados.</p>
+                <form class="form" method="post" action="/veiculo/confirmar-saida">
+                    <div class="field">
+                        <label for="placa">Veículo</label>
+                        <select class="input select" id="placa" name="id" required="">
+                            <option value="">Selecione a placa</option>
+                            <option th:each="v : ${veiculos}" th:value="${v.id}" th:text="${v.placa + ' — ' + v.modelo + ' ' + v.cor}"> </option>
+                        </select>
+                    </div>
+                    <p class="helper" th:if="${veiculos == null or veiculos.isEmpty()}">Nenhum veículo registrado para remover.</p>
+                    <button class="danger" type="submit" th:disabled="${veiculos == null or veiculos.isEmpty()}">Continuar para confirmação</button>
+                </form>
+                <div class="divider"></div>
+                <div class="vehicle-list" th:if="${veiculos != null and !veiculos.isEmpty()}">
+                    <h3 class="section-title">Registros dos veículos</h3>
+                    <div class="record-list">
+                        <div class="record-row" th:each="v : ${veiculos}">
+                            <div> <strong th:text="${v.placa}">ABC-1234</strong> <span th:text="${v.modelo + ' • ' + v.cor}">Modelo • Cor</span> </div>
+                            <a class="button secondary small-button" th:href="@{/veiculo/registro/{id}(id=${v.id})}">Ver registro</a>
+                        </div>
+                    </div>
+                </div>
+                <p class="helper center"><a href="/painel">← Voltar ao painel</a></p>
+            </section>
+        </main>
+    </body>
+</html>
